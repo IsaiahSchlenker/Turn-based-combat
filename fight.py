@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 12 11:50:34 2024
-
-@author: bluet
-"""
 class Character(object):
     def __init__(self):
         super().__init__()
@@ -69,7 +63,7 @@ class Character(object):
         else:
             print("damage must be a number")
             self.__maxDamage = 1
-    
+        return self.__maxDamage
     @property
     def armor(self):
         return self.__armor
@@ -88,7 +82,13 @@ class Character(object):
             
     def printStats(self):
         print(f"""{self.name}
-        Hit Points: {:>10}{self.hitPoints}
-        Hit Chance: {:>10}{self.hitChance}
-        Max Damage: {:>10}{self.maxDamage}
-        armor: {:>10}{self.armor}""")
+        Hit Points: {self.hitPoints}
+        Hit Chance: {self.hitChance}
+        Max Damage: {self.maxDamage}
+        armor:      {self.armor}""")
+        
+def main():
+    c = Character()
+    c.printStats()
+    
+main()
