@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 12 11:50:22 2024
-
-@author: bluet
-"""
-
 import tbc
 
 def main():
@@ -16,14 +9,22 @@ def main():
     hero.maxDamage = 5
     hero.armor = 2
 
-    monster = tbc.Character("Monster", 20, 30, 5, 0)
+    monster = tbc.Character()
+    monster.name = "Monster"
+    monster.hitPoints = 100
+    monster.hitChance = 25
+    monster.maxDamage = 5
+    monster.armor = 0
 
-    hero.printStats()
-    monster.printStats()
     while keepGoing:
-        tbc.fight(hero, monster)
-        tbc.gameEnder(hero)
-        tbc.gameEnder(monster)
+        hero.printStats()
+        monster.printStats()
+        health = tbc.fight(hero, monster)
+        health1 = tbc.fight(monster, hero)
+        if health <= 0:
+            keepGoing = False
+        if health1 <= 0:
+            keepGoing = False
         input("press enter to continue")
 
 if __name__ == "__main__":
