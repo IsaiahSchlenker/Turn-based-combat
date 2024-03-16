@@ -24,11 +24,7 @@ class Character(object):
     @hitPoints.setter
     def hitPoints(self, value):
         if type(value) == int:
-            if value >= 0:
-                self.__hitPoints = value
-            else:
-               print("hit points must be positive")
-               self.__hitPoints = 1
+            self.__hitPoints = value
         else:
             print("hit points must be a number")
             self.__hitPoints = 1
@@ -112,9 +108,20 @@ class Character(object):
         maxDamage = maxDamage(self, self.maxDamage)
         hitChance = hitChance(self, self.hitChance)
         hitPoints = hitPoints(self, self.hitPoints)        
-    
-def main():
-    c = Character()
-    c.printStats()
-    
-main()
+def fight(self, enemy):
+    import random
+    if random.randint(1,100) < self.hitChance:
+        damage = random.randint(1, self.maxDamage)
+        damage -= enemy.armor
+        if damage < 0:
+            damage = 0
+        enemy.hitPoints -= damage
+        if enemy.armor > 0:
+            print(f"The enemy got hit for {damage} damage because it's armor absorbed {enemy.armor} points")
+        else:
+            print(f"The enemy got hit for {damage} damage")
+    return enemy.hitPoints
+def gameEnder(self):
+     if self.hitPoints <= 0:
+         keepGoing = False
+     return keepGoing
